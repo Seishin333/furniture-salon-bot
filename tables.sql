@@ -1,4 +1,3 @@
--- 1. Створюємо саму базу
 SET NAMES 'utf8mb4';
 SET CHARACTER SET utf8mb4;
 
@@ -6,7 +5,6 @@ DROP DATABASE IF EXISTS furniture_salon;
 CREATE DATABASE furniture_salon CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE furniture_salon;
 
--- 2. Створюємо таблиці, явно вказуючи назву бази через крапку
 CREATE TABLE furniture_salon.client (
     client_id INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(100) NOT NULL,
@@ -66,7 +64,6 @@ CREATE TABLE furniture_salon.order_item (
     CONSTRAINT fk_item_furniture FOREIGN KEY (furniture_id) REFERENCES furniture_salon.furniture(furniture_id) ON DELETE CASCADE
 );
 
--- 3. Наповнюємо даними, також через повне ім'я
 INSERT INTO furniture_salon.client (full_name, phone, email, address) VALUES
 ('Олександр Іваненко', '+380501112233', 'ivanenko@email.com', 'Київ'),
 ('Марія Ковальчук', '+380672223344', 'kovalchuk@email.com', 'Львів'),
@@ -124,5 +121,4 @@ INSERT INTO furniture_salon.order_item (order_id, furniture_id, quantity, price_
 (1, 1, 2, 1200), (2, 2, 1, 15500), (3, 3, 1, 4800), (4, 4, 1, 8200), (5, 5, 1, 12300),
 (6, 6, 2, 3500), (7, 7, 2, 950), (8, 8, 1, 2800), (9, 9, 1, 5400), (10, 10, 2, 6200);
 
--- Перевірка
 SELECT * FROM furniture_salon.employee;
